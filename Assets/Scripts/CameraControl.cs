@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
+    public GameControl GameControl;
     float sensibility = 5f;
     float softness =2f;
 
@@ -20,6 +21,7 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameControl.gameActive){
         Vector2 mousePos = new Vector2 (Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         mousePos = Vector2.Scale(mousePos,new Vector2(sensibility*softness,sensibility*softness));
         nextPos.x = Mathf.Lerp (nextPos.x,mousePos.x,1f/softness);
@@ -27,6 +29,6 @@ public class CameraControl : MonoBehaviour
         camPos += nextPos;
         transform.localRotation = Quaternion.AngleAxis(-camPos.y,Vector3.right);
         gamer.transform.localRotation = Quaternion.AngleAxis (camPos.x,gamer.transform.up);
-
+        }
     }
 }

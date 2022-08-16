@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class cube : MonoBehaviour
 {
-    float time = 2f;
+    float time = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,7 @@ public class cube : MonoBehaviour
        time -=Time.deltaTime;
        if(time<0){
         GetComponent<Animator> ().Play (0);
-        time = Random.Range (2,4);
+        time = Random.Range (5,10);
        }
     }
 }
